@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using Npgsql;
 using System.Data.SqlClient;
 using Excel = Microsoft.Office.Interop.Excel;
-namespace ProjetoControleEstoqueCelula
+namespace ProjetoControleEstoque
 {
     public partial class formControleEstoque : Form
     {
