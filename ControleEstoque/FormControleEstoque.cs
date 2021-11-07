@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
@@ -369,6 +369,7 @@ namespace ProjetoControleEstoqueCelula
         {
             UpdateCount();
             UpdateView();
+            datagrid.Columns[1].ReadOnly = true;
         }
 
         private void buttonFilterItem_Click(object sender, EventArgs e)
@@ -385,7 +386,9 @@ namespace ProjetoControleEstoqueCelula
 
         private void chkbxEdit_CheckedChanged(object sender, EventArgs e)
         {
-            datagrid.ReadOnly = !chkbxEdit.Checked;
+            datagrid.Columns[2].ReadOnly = !chkbxEdit.Checked;
+            datagrid.Columns[3].ReadOnly = !chkbxEdit.Checked;
+            datagrid.Columns[4].ReadOnly = !chkbxEdit.Checked;
         }
 
         private void datagrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -438,6 +441,12 @@ namespace ProjetoControleEstoqueCelula
 
         private void button_toExcel_Click(object sender, EventArgs e)
         {
+            if(datagrid.RowCount == 0)
+            {
+                MessageBox.Show("Não é possível exportar um estoque que não possui nenhum item cadastrado!.", "Erro ao exportar.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
             Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
