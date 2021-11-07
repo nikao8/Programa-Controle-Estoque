@@ -1,5 +1,5 @@
 ﻿
-namespace ProjetoControleEstoqueCelula
+namespace ProjetoControleEstoque
 {
     partial class formControleEstoque
     {
