@@ -288,6 +288,8 @@ namespace ProjetoControleEstoque
                 }
                 buttonLimpar_Click(sender, e);
             }
+            datagrid.Columns[1].ReadOnly = true;
+
         }
 
         private void chkbxSelectAll_CheckedChanged(object sender, EventArgs e)
@@ -382,6 +384,7 @@ namespace ProjetoControleEstoque
                 return;
             }            
             FilterItem();
+            datagrid.Columns[1].ReadOnly = true;
         }
 
         private void chkbxEdit_CheckedChanged(object sender, EventArgs e)
